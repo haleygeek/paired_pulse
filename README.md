@@ -27,4 +27,3 @@ Analyzed PPR will be output to a new sheet named "Your Sheet PPR"
     Column 2 = paired pulse ratio
   
   
-For an example .xlsx file see the ppr.xlsx file associated with this program on github.com/haleygeek 
