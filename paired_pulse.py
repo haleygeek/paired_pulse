@@ -48,11 +48,11 @@ while file_check == False:
     filepath = str (user_path)
     print "\n", "\t", "You entered", "'",filepath,"'","\n"
 
-    if filepath == "stop":
+    if filepath == "stop" or filepath == "Stop" or filepath == "STOP":
         print "\t", "Program Stopped."
-        quit()
+        sys.exit()
 
-    elif filepath == "help":
+    elif filepath == "help" or filepath == "Help" or filepath == "HELP":
 
         # Help routine if the user is running windows
         if _platform == "win32":
@@ -62,7 +62,7 @@ while file_check == False:
             print "4) Highlight and copy the location (i.e. C:\user\haley\dropbox\Shank3\Ephys.xlslx)"
             print "5) Paste it at the prompt"
             print "\n"
-            filepath = "Enter the file path for the excel file. Type 'quit' to end the program"
+            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
         # Help routine if the user is running MacOS
         elif _platform == "darwin":
@@ -72,7 +72,7 @@ while file_check == False:
             print "4) Highlight and copy the path labeled 'Where' (i.e. /Dropbox/Shank3/ppr.xlsx)"
             print "5) Paste it at the prompt"
             print "\n"
-            filepath = "Enter the file path for the excel file. Type 'quit' to end the program"
+            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
     # Validates that the filepath they entered leads to a valid filename. If not, it prompts them again.
     else:
@@ -90,13 +90,13 @@ wb = load_workbook(filepath)
 print "\t", "Excel file opened successfully.", "\n"
 
 input_sheet = raw_input("Enter the name of the worksheet (bottom tab)? or 'stop' to exit.")
-sheet = str(input_sheet)
+sheet = input_sheet
 
 print "\t", "You entered", sheet
 
 if sheet == "stop" or sheet == "Stop" or sheet == "STOP":
     print "\t", "Program Stopped."
-    quit()
+    sys.exit()
 else:
     ws = wb [sheet]
     print "\t", "Sheet opened successfully.", "\n"
@@ -166,6 +166,7 @@ wb.save(filepath)
 print "Your PPR data has been added to the workbook as", sheet,"Analyzed."
 
 
-quit ()
+sys.exit()
+
 
 
