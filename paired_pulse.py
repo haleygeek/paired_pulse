@@ -1,24 +1,8 @@
-__author__ = 'haleygeek'
+__author__ = 'Haley E. Speed, Ph.D'
+__copyright__ = 'copyright 2012'
 
 # paired_pulse.py
 # Last updated 5-25-15
-
-# This program takes raw data from a paired pulse experiment and calculates the paired-pulse ratio, saving the PPR in
-# a separate sheet
-
-# Each experiment should be organized as:
-# Column 1 = interstimulus interval
-# Column 2 = raw slope or amplitude of pulse 1
-# Column 3 = raw slope or amplitude of pulse 2
-
-# Analyzed PPR will be output to a new sheet named "Your Sheet PPR"
-# For each experiment:
-# Column 1 = interstimulus interval
-# Column 2 = paired pulse ratio
-
-# Load openpyxls.py which handles interface with xlsx files
-# Load sys which handles interactions with the operating system (exit, platform, etc.)
-# Load os.path with handles file saving
 
 import openpyxl
 import sys
@@ -27,24 +11,12 @@ import os.path
 from openpyxl import load_workbook
 from sys import platform as _platform
 
-
-print  "Welcome to the Paired-Pulse Analyzer by Haley Speed."
-print  "This program makes several assumptions based on my Ephys excel template (available at Github, user haleygeek):"
-print "1) Each experiment will take up 3 columns"
-print "\t", "Column 1 = interstimulus interval"
-print "\t", "Column 2 = raw slope or amplitude of pulse 1"
-print "\t", "Column 3 = raw slope or amplitude of pulse 2"
-print "2) Row 1, column 1 of each experiment is reserved for the experiment name."
-print "3) Row 1, columns 2 and 3 are not analyzed and will be disregarded by the program"
-
-
 # Routine to get the filename and path from the user
-
 file_check = False
 
 while file_check == False:
 
-    user_path = raw_input("Enter the file path for the excel file. Type 'help' to find the filepath. Type 'stop' to end the program")
+    user_path = raw_input("Enter the file path for the excel file. Type 'stop' to end the program")
     filepath = str (user_path)
     print "\n", "\t", "You entered", "'",filepath,"'","\n"
 
@@ -56,22 +28,6 @@ while file_check == False:
 
         # Help routine if the user is running windows
         if _platform == "win32":
-            print "1) Find the xlsx file in Windows explorer."
-            print "2) Right click on the file."
-            print "3) Choose 'properties'"
-            print "4) Highlight and copy the location (i.e. C:\user\haley\dropbox\Shank3\Ephys.xlslx)"
-            print "5) Paste it at the prompt"
-            print "\n"
-            filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
-
-        # Help routine if the user is running MacOS
-        elif _platform == "darwin":
-            print "1) Find the xlsx file in Finder."
-            print "2) Ctrl Click on the file."
-            print "3) Choose 'Get info'"
-            print "4) Highlight and copy the path labeled 'Where' (i.e. /Dropbox/Shank3/ppr.xlsx)"
-            print "5) Paste it at the prompt"
-            print "\n"
             filepath = "Enter the file path for the excel file. Type 'stop' to end the program"
 
     # Validates that the filepath they entered leads to a valid filename. If not, it prompts them again.
